@@ -132,3 +132,22 @@ function endTest() {
     // Remove Enter key listener after test ends
     document.removeEventListener("keydown", handleEnterKey);
 }
+
+function restartTest() {
+    isTestRunning = false; // Reset test state
+    // Clear inputs and results
+    document.getElementById("userInput").value = "";
+    document.getElementById("output").innerHTML = "";
+    document.getElementById("speed").innerHTML = "";
+    document.getElementById("inputText").innerText = "";
+    document.getElementById("userInput").readOnly = true;
+
+    // Show Start Test button again and hide End Test and Restart buttons
+    var startButton = document.querySelector("button[onclick='startTest()']");
+    startButton.style.display = "block";
+
+    var endButton = document.getElementById("btnEnd");
+    endButton.style.display = "none"; // Hide the End Test button until the test starts again
+    var restartButton = document.getElementById("btnRestart");
+    restartButton.style.display = "none"; // Hide the Restart Test button initially
+}
