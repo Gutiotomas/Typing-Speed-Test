@@ -73,3 +73,62 @@ function startTest() {
     // Add Enter key listener to end test only if text matches
     document.addEventListener("keydown", handleEnterKey);
 }
+
+function endTest() {
+    if (!isTestRunning) return; // Prevent ending the test if it's not running
+
+    var userTypedText = document.getElementById("userInput").value;
+
+    isTestRunning = false; // Mark test as not running
+    endTime = new Date().getTime();
+
+    // Disable user input
+    document.getElementById("userInput").readOnly = true;
+
+    // Calculate time elapsed and words per minute (WPM)
+    var timeElapsed = (endTime - startTime) / 1000; // in seconds
+    var typedWords = userTypedText.split(/\s+/).filter(function (word) {
+        return word !== "";
+    }).length;
+    var totalLength = userTypedText.length;
+
+    var wpm = 0; // Default value
+    if (timeElapsed !== 0 && !isNaN(typedWords)) {
+        wpm = Math.round((typedWords / timeElapsed) * 60);
+    }
+    var accuracy = calculateAccuracy(userTypedText, testText);
+
+    // Display the results
+    var outputDiv = document.getElementById("output");
+    outputDiv.innerHTML =
+        "<h2>Typing Test Results:</h2>" +
+        "<p>Total Length: " + totalLength + "</p>" +
+        "<p>Words Typed: " + typedWords + "</p>" +
+        "<p>Time Elapsed: " + timeElapsed.toFixed(2) +" seconds</p>" +
+        "<p>Words Per Minute (WPM): " + wpm + "</p>" + 
+        "<p>Precision: " + accuracy.toFixed(2) + "%</p>";
+
+    var speedDiv = document.getElementById("speed");
+
+    // Check the conditions for wpm and accuracy
+    if (wpm <= 35 && accuracy <= 70) {
+        speedDiv.innerHTML = "<p>You are a beginner, keep practicing!</p>";
+    } else if (wpm <= 50 && accuracy <= 80) {
+        speedDiv.innerHTML = "<p>You type fast but with low precision!</p>";
+    } else if (wpm  <70 && accuracy > 80) {
+        speedDiv.innerHTML = "<p>You are an intermediate typist!</p>";
+    } else if (wpm  >=70 && wpm <=80 && accuracy >= 90) {
+        speedDiv.innerHTML = "<p>You are an advanced typist!</p>";
+    } else {
+        speedDiv.innerHTML = "<p>You are a professional typist!</p>";
+    }
+
+    // Hide End Test button and show Restart button
+    var endButton = document.getElementById("btnEnd");
+    endButton.style.display = "none";
+    var restartButton = document.getElementById("btnRestart");
+    restartButton.style.display = "block"; // Show Restart button
+
+    // Remove Enter key listener after test ends
+    document.removeEventListener("keydown", handleEnterKey);
+}
