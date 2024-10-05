@@ -3,29 +3,37 @@ body{
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0; 
-    font-size: 100%;
+    font-size: 90%;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
 label{
-    display: block;
+    display:block;
     margin: 0 auto;
-    width:34%;
+    width:30%;
+    padding: -5%;
 }
 #inputText{
     text-align: center;
+    padding: -5%;
+}
+#instructions{
+    text-align: center;
+    padding: -5%;
 }
 textarea{
     background-color: #F9B872;
     display: block;
     margin: 0 auto;
-    font-size: large;
+    font-size:medium;
 }
 button{
     background-color: #FAE7A5;
     display: block;
     margin: 0 auto;
-    width: 10%;
-    padding: 10px;
+    width: 15%;
+    padding: 0.5%;
     text-align: center;
+    font-size: medium;
 }
 h1{
     text-align: center;
@@ -42,8 +50,7 @@ div{
 }
 footer{
     text-align: center;
-    padding: 10px;
-    position: fixed;
+    position:static;
     bottom: 0;
     width: 100%;
 }
