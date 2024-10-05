@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Speed Test Analysis</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js"></script>
+</head>
+<body>
+    <h1>Speed Typing Analysis</h1>
+    <label for="inputText">Type the following text:</label><br>
+    <textarea id="inputText" cols="60" rows="1" readonly placeholder="Get ready to type..."></textarea><br>
+    <label for="userInput">Your typing:</label><br>
+    <textarea id="userInput" cols="60" rows="1" placeholder="Start typing when ready"></textarea><br>
+    <button onclick="startTest()">Start Test</button>
+    <button onclick="endTest()" id="btnEnd" style="display: none;">End Test</button>
+    <button onclick="restartTest()" id="btnRestart" style="display: none;">Restart Test</button>    
+    <div id="output"></div>
+    <div id="speed"></div>
+    <footer>
+        <p>This page was created by Tomas Gutierrez Orrego</p>
+        <p>&copy; 2024</p>
+    </footer>
+</body>
+</html>
