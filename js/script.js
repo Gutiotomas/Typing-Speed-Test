@@ -151,3 +151,10 @@ function restartTest() {
     var restartButton = document.getElementById("btnRestart");
     restartButton.style.display = "none"; // Hide the Restart Test button initially
 }
+
+function handleEnterKey(event) {
+    if (event.key === "Enter") {
+        event.preventDefault(); // Prevent default Enter behavior
+        endTest();
+    }
+}
