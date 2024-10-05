@@ -112,15 +112,17 @@ function endTest() {
 
     // Check the conditions for wpm and accuracy
     if (wpm <= 35 && accuracy <= 70) {
-        speedDiv.innerHTML = "<p>You are a beginner, keep practicing!</p>";
-    } else if (wpm <=70  && accuracy <= 80) {
-        speedDiv.innerHTML = "<p>You type fast but with low precision!</p>";
-    } else if (wpm >35 && wpm<70 && accuracy > 80) {
-        speedDiv.innerHTML = "<p>You are an intermediate typist!</p>";
-    } else if (wpm  >70 && wpm <=80 && accuracy >= 90) {
-        speedDiv.innerHTML = "<p>You are an advanced typist!</p>";
+    speedDiv.innerHTML = "<p>You are a beginner, keep practicing!</p>";
+    } else if (wpm > 35 && wpm <= 50 && accuracy <= 80) {
+        speedDiv.innerHTML = "<p>You type fast but with low precision, focus on accuracy!</p>";
+    } else if (wpm > 50 && wpm <= 70 && accuracy > 80 && accuracy < 90) {
+        speedDiv.innerHTML = "<p>You are an intermediate typist with good speed and accuracy!</p>";
+    } else if (wpm > 70 && wpm <= 90 && accuracy >= 90) {
+        speedDiv.innerHTML = "<p>You are an advanced typist with excellent speed and precision!</p>";
+    } else if (wpm > 90 && accuracy >= 95) {
+        speedDiv.innerHTML = "<p>You are a professional typist with top-level speed and accuracy!</p>";
     } else {
-        speedDiv.innerHTML = "<p>You are a professional typist!</p>";
+        speedDiv.innerHTML = "<p>Keep practicing to improve your speed and accuracy!</p>";
     }
 
     // Hide End Test button and show Restart button
