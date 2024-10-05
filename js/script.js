@@ -158,3 +158,22 @@ function handleEnterKey(event) {
         endTest();
     }
 }
+
+function calculateAccuracy(userText, originalText) {
+    // Compare character by character
+    var correctChars = 0;
+    var totalChars = originalText.length;
+
+    // Loop through each character in the user's text
+    for (var i = 0; i < userText.length && i < totalChars; i++) {
+        if (userText[i] === originalText[i]) {
+            correctChars++;
+            if (i === totalChars - 1) {
+                // If the last character matches, check if the user has typed extra characters
+                correctChars -= userText.length - totalChars;
+            }
+        }
+    }
+    // Calculate accuracy as a percentage
+    return (correctChars / totalChars) * 100;
+}
